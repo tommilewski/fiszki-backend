@@ -1,5 +1,7 @@
 package com.example.learnappbackend.services;
 
+import com.example.learnappbackend.model.User;
+import com.example.learnappbackend.model.dto.RegisterRequest;
 import com.example.learnappbackend.repository.UserRepository;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.http.Cookie;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -21,7 +24,6 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final JwtService jwtService;
     private final CookieService cookieService;
-
 
     @Value("${jwt.expired}")
     private int expiredToken;
