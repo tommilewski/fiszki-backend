@@ -17,7 +17,7 @@ public class RegisterService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public User register(RegisterRequest request) {
+    public void register(RegisterRequest request) {
         userRepository.findByUsername(request.getUsername()).ifPresent((user) -> {
             throw new UserExistsWithUsernameException("User with username: " + request.getUsername() + " exists");
         });
@@ -38,6 +38,5 @@ public class RegisterService {
         }
 
         userRepository.saveAndFlush(user);
-        return user;
     }
 }
