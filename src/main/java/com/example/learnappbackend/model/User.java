@@ -28,15 +28,19 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @OneToMany(mappedBy = "user")
+    private List<IndexCard> indexCards;
+
     public User() {
         generateUUID();
     }
 
-    public User(String email, String username, String password, Role role) {
+    public User(String email, String username, String password, Role role, List<IndexCard> indexCards) {
         this.email = email;
         this.username = username;
         this.password = password;
         this.role = role;
+        this.indexCards = indexCards;
         generateUUID();
     }
 
