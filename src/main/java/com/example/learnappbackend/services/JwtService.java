@@ -103,7 +103,7 @@ public class JwtService {
                 .getSubject();
     }
 
-    public String refreshToken(String token, int expiry) {
+    private String refreshToken(String token, int expiry) {
         String username = getSubject(token);
         return generateToken(username, expiry);
     }
