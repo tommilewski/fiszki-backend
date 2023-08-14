@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
+@CrossOrigin()
 public class RegisterController {
 
     private final RegisterService registerService;
-
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> registerUser(@RequestBody RegisterRequest request) {
         registerService.register(request);
