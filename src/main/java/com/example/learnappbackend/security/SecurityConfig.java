@@ -24,7 +24,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> {
                     auth.dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.ERROR).permitAll();
                     auth.requestMatchers("/api/v1/auth/register","/api/v1/auth/login", "/api/v1/auth/validate", "/api/v1/auth/auto-login",
-                            "/api/v1/auth/loggedIn", "/api/v1/auth/logout", "/api/v1/add", "/api/v1/get").permitAll();
+                            "/api/v1/auth/loggedIn", "/api/v1/auth/logout", "/api/v1/add", "/api/v1/get", "/api/v1/getAll").permitAll();
                 })
                 .build();
     }
