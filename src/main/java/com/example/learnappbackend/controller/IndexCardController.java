@@ -27,4 +27,14 @@ public class IndexCardController {
         return indexCardService.findAllByUser(username);
 
     }
+
+    @GetMapping("/api/v1/all")
+    public List<IndexCardResponse> getAllPublic() {
+        return indexCardService.findAllPublic();
+    }
+
+    @GetMapping("/api/v1/get/{id}")
+    public IndexCardResponse getById(@PathVariable String id) {
+        return indexCardService.findById(id);
+    }
 }

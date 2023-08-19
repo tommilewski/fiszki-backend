@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
-import java.util.Map;
 
 @Getter
 @Setter
@@ -14,8 +13,10 @@ import java.util.Map;
 @AllArgsConstructor
 public class IndexCardResponse {
 
+    private Long id;
     private String name;
     private String type;
-    private Map<String, String> questions;
+    private List<String> words;
+    private List<String> translations;
     private String username;
 }

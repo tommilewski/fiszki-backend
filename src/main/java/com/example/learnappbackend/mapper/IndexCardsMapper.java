@@ -6,10 +6,6 @@ import com.example.learnappbackend.model.dto.IndexCardRequest;
 import com.example.learnappbackend.model.dto.IndexCardResponse;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 @Component
 public class IndexCardsMapper {
 
@@ -25,21 +21,13 @@ public class IndexCardsMapper {
 
     public IndexCardResponse map(IndexCard indexCard) {
         return new IndexCardResponse(
+                indexCard.getId(),
                 indexCard.getName(),
                 indexCard.getType(),
-                changeToQuestions(indexCard),
+                indexCard.getWords(),
+                indexCard.getTranslations(),
                 indexCard.getUser().getUsername());
 
     }
 
-
-    private Map<String, String> changeToQuestions(IndexCard indexCard) {
-        return IntStream.range(0, indexCard.getWords().size())
-                .boxed()
-                .collect(Collectors.toMap(
-                        i -> indexCard.getWords().get(i),
-                        i -> indexCard.getTranslations().get(i)
-                ));
-
-    }
 }

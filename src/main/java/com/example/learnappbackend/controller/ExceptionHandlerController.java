@@ -1,5 +1,6 @@
 package com.example.learnappbackend.controller;
 
+import com.example.learnappbackend.exceptions.IndexCardNotFoundException;
 import com.example.learnappbackend.exceptions.UserExistsWithEmailException;
 import com.example.learnappbackend.exceptions.UserExistsWithUsernameException;
 import com.example.learnappbackend.model.dto.AuthResponse;
@@ -33,6 +34,11 @@ public class ExceptionHandlerController {
     @ExceptionHandler(UsernameNotFoundException.class)
     public ResponseEntity<AuthResponse> handleUsernameNotFoundException() {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new AuthResponse(Code.A2));
+    }
+
+    @ExceptionHandler(IndexCardNotFoundException.class)
+    public ResponseEntity<AuthResponse> handleIndexCardNotFoundException() {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new AuthResponse(Code.A6));
     }
 
 
