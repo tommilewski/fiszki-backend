@@ -31,6 +31,14 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<IndexCard> indexCards;
 
+    @ManyToMany()
+    @JoinTable(
+            name = "user_favorite_index_cards",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "index_card_id")
+    )
+    private List<IndexCard> favoriteIndexCards;
+
     public User() {
         generateUUID();
     }

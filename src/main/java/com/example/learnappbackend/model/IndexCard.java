@@ -30,12 +30,16 @@ public class IndexCard {
     @ElementCollection
     private List<String> translations;
 
-    public IndexCard(String name, String type, User user, List<String> words, List<String> translations) {
+    @ManyToMany(mappedBy = "favoriteIndexCards")
+    private List<User> usersWhoFavorite;
+
+    public IndexCard(String name, String type, User user, List<String> words, List<String> translations, List<User> usersWhoFavorite) {
         this.name = name;
         this.type = type;
         this.user = user;
         this.words = words;
         this.translations = translations;
+        this.usersWhoFavorite = usersWhoFavorite;
     }
 
 }

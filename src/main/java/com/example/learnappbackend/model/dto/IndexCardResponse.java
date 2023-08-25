@@ -19,4 +19,5 @@ public class IndexCardResponse {
     private List<String> words;
     private List<String> translations;
     private String username;
+    private List<String> usersWhoFavorite;
 }

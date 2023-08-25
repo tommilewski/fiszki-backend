@@ -12,7 +12,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -53,6 +55,30 @@ public class IndexCardService {
     public IndexCardResponse findById(String id) {
         IndexCard indexCard = indexCardRepository.findById(Long.valueOf(id)).orElseThrow(() -> new IndexCardNotFoundException("Nie ma takej fiszki"));
         return this.mapper.map(indexCard);
+
+    }
+
+    public void updateFavoriteIndexCards(String username, List<String> updatedList) {
+        User user = userRepository.findByUsername(username).orElse(null);
+
+        List<IndexCard> result = new ArrayList<>();
+        for (String id : updatedList) {
+            IndexCard indexCard = indexCardRepository.findById(Long.valueOf(id)).get();
+            result.add(indexCard);
+        }
+
+        if (user != null) {
+            user.setFavoriteIndexCards(result);
+            userRepository.save(user);
+        }
+    }
+
+    public List<String> getFavoritesId(String username) {
+        User user = userRepository.findByUsername(username).get();
+        return user.getFavoriteIndexCards()
+                .stream()
+                .map(indexCard -> String.valueOf(indexCard.getId()))
+                .collect(Collectors.toList());
 
     }
 }
