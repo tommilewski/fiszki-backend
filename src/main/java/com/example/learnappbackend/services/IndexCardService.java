@@ -81,4 +81,12 @@ public class IndexCardService {
                 .collect(Collectors.toList());
 
     }
+
+    public List<IndexCardResponse> getAllFavoritesByUser(String username) {
+        User user = userRepository.findByUsername(username).get();
+        return user.getFavoriteIndexCards()
+                .stream()
+                .map(mapper::map)
+                .collect(Collectors.toList());
+    }
 }

@@ -7,8 +7,6 @@ import com.example.learnappbackend.model.dto.IndexCardResponse;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class IndexCardsMapper {
@@ -31,17 +29,8 @@ public class IndexCardsMapper {
                 indexCard.getType(),
                 indexCard.getWords(),
                 indexCard.getTranslations(),
-                indexCard.getUser().getUsername(),
-                changeUserToUsername(indexCard.getUsersWhoFavorite())
+                indexCard.getUser().getUsername()
         );
-
-    }
-
-    private List<String> changeUserToUsername(List<User> users) {
-        return users
-                .stream()
-                .map(User::getUsername)
-                .collect(Collectors.toList());
 
     }
 

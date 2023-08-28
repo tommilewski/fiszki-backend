@@ -39,6 +39,15 @@ public class User implements UserDetails {
     )
     private List<IndexCard> favoriteIndexCards;
 
+    @OneToMany(mappedBy = "sender")
+    private List<FriendNotification> sentFriendNotification;
+
+    @OneToMany(mappedBy = "receiver")
+    private List<FriendNotification> receivedFriendNotification;
+
+    @ManyToMany
+    private List<User> friends;
+
     public User() {
         generateUUID();
     }

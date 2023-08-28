@@ -36,6 +36,11 @@ public class IndexCardController {
         return indexCardService.findById(id);
     }
 
+    @GetMapping("/api/v1/get-all/favorites/{username}")
+    public List<IndexCardResponse> getAllFavoritesByUser(@PathVariable String username) {
+        return indexCardService.getAllFavoritesByUser(username);
+    }
+
     @GetMapping("api/v1/get/favorite/{username}")
     public List<String> getFavoritesId(@PathVariable String username) {
         return indexCardService.getFavoritesId(username);
