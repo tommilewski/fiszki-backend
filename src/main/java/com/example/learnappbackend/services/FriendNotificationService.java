@@ -24,10 +24,12 @@ public class FriendNotificationService {
         User sender = friendNotification.getSender();
         User receiver = friendNotification.getReceiver();
 
-        sender.getFriends().add(receiver);
-        receiver.getFriends().add(sender);
-
+        if (!sender.getFriends().contains(receiver)) {
+            sender.getFriends().add(receiver);
+            receiver.getFriends().add(sender);
+        }
         friendNotificationRepository.delete(friendNotification);
+
     }
 
     public void rejectFriendRequest(FriendNotification friendNotification) {

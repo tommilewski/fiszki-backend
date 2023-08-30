@@ -37,10 +37,13 @@ public class UserService implements UserDetailsService {
         User user = userRepository.findByUsername(username).get();
         User userToDelete = userRepository.findByUsername(usernameToDelete).get();
 
-        user.getFriends().remove(userToDelete);
-        userToDelete.getFriends().remove(user);
 
-        userRepository.save(user);
-        userRepository.save(userToDelete);
+        if (user.getFriends().contains(userToDelete)) {
+            user.getFriends().remove(userToDelete);
+            userToDelete.getFriends().remove(user);
+
+            userRepository.save(user);
+            userRepository.save(userToDelete);
+        }
     }
 }
