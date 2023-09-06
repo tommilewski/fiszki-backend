@@ -28,8 +28,8 @@ public class SecurityConfig {
                             "/api/v1/get/{id}", "api/v1/update/favorite/{username}", "api/v1/get/favorite/{username}", "/api/v1/get-all/favorites/{username}",
                             "/api/v1/friend-requests/send", "/api/v1/friend-requests/accept", "/api/v1/friend-requests/reject", "/api/v1/friend-requests/get-all/{username}",
                             "/api/v1/friends/get-all/{username}", "/api/v1/friends/delete/{username}",
-                            "/api/v1/chat/add", "/api/v1/chat/add/message/{chatId}", "/api/v1/chat/delete/{chatId}",
-                            "/api/v1/chat/friends/{firstUsername}/{secondUsername}", "/api/v1/chat/all/messages/chat/{chatId}").permitAll();
+                            "/api/v1/chat/add", "/api/v1/chat/add/message/{chatId}", "api/v1/chat/delete/{firstUsername}/{secondUsername}",
+                            "/api/v1/chat/friends/{firstUsername}/{secondUsername}", "/api/v1/chat/all/messages/chat/{chatId}", "/api/v1/user").permitAll();
                 })
                 .build();
     }

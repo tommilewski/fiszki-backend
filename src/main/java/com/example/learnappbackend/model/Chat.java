@@ -22,7 +22,7 @@ public class Chat {
     private Long id;
     private String firstUsername;
     private String secondUsername;
-    @OneToMany(mappedBy = "chat")
+    @OneToMany(mappedBy = "chat", cascade = CascadeType.ALL)
     private List<Message> messages;
 
     public Chat(String firstUsername, String secondUsername) {

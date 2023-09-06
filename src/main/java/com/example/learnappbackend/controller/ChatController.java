@@ -38,9 +38,9 @@ public class ChatController {
         return chatService.getChatByFriends(firstUsername, secondUsername);
     }
 
-    @DeleteMapping("/delete/{chatId}")
-    public void deleteChatById(@PathVariable Long chatId) {
-        chatService.deleteChatById(chatId);
+    @DeleteMapping("/delete/{firstUsername}/{secondUsername}")
+    public void deleteChatById(@PathVariable String firstUsername, @PathVariable String secondUsername) {
+        chatService.deleteChatByFriends(firstUsername, secondUsername);
     }
 
 }

@@ -74,7 +74,7 @@ public class ChatService {
     }
 
 
-    public void deleteChatById(Long chatId) {
-        chatRepository.deleteById(chatId);
+    public void deleteChatByFriends(String firstUsername, String secondUsername) {
+        chatRepository.deleteByFirstUsernameAndSecondUsername(firstUsername, secondUsername);
     }
 }

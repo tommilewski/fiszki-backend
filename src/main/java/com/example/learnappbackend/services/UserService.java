@@ -46,4 +46,11 @@ public class UserService implements UserDetailsService {
             userRepository.save(userToDelete);
         }
     }
+
+    public List<String> findAllByUsernameLike(String username) {
+        return userRepository.findAllByUsernameLike(username)
+                .stream()
+                .map(User::getUsername)
+                .collect(Collectors.toList());
+    }
 }
