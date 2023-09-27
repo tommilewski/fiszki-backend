@@ -30,6 +30,7 @@ public class SecurityConfig {
                             "/api/v1/friends/get-all/{username}", "/api/v1/friends/delete/{username}",
                             "/api/v1/chat/add", "/api/v1/chat/add/message/{chatId}", "api/v1/chat/delete/{firstUsername}/{secondUsername}",
                             "/api/v1/chat/friends/{firstUsername}/{secondUsername}", "/api/v1/chat/all/messages/chat/{chatId}", "/api/v1/user").permitAll();
+                    auth.anyRequest().permitAll();
                 })
                 .build();
     }
